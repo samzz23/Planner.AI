@@ -22,9 +22,10 @@ COPY . .
 # Set environment variables
 ENV PYTHONPATH=/app/backend
 ENV PORT=8000
+ENV HOST=0.0.0.0
 
 # Expose the port
 EXPOSE 8000
 
 # Command to run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"] 
+CMD uvicorn app.main:app --host ${HOST} --port ${PORT} --workers 1 
